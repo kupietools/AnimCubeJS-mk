@@ -1,7 +1,7 @@
 # AnimCubeJS-mk
 AnimCubeJS is a user-friendly, feature-rich Rubik's Cube simulator you can use in your own web pages.
 
-AnimCubeJS-mk is a custom build of it incorporating features and customizations into AnimCube3.js for great justice:    
+AnimCubeJS-mk is a custom build of just the AnimCube3.js file incorporating features and customizations for great justice:    
 1.) Better color options, I think (note: better colors not included in config tool examples, you'll just have to play with it.)    
 2.) Florian mod directly integrated    
 3.) Markers mod directly integrated    
