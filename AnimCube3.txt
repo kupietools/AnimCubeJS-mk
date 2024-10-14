@@ -1,3 +1,0 @@
-bgcolor=ffffff
-butbgcolor=99eebb
-movetext=1
