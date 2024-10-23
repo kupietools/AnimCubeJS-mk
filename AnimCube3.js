@@ -1632,7 +1632,7 @@ function AnimCube3(params) {
                     drawPolygon(graphics, fillX, fillY, "#fdfdfd");
                   */
 		  drawSuperArrow(graphics, fillX, fillY, i, scube[i][p * 3 + q], colors[cube[i][p * 3 + q]]);
-                  drawMarker(graphics, fillX, fillY, mcube[i][p * 3 + q]);
+                  drawMarker(graphics, fillX, fillY, mcube[i][p * 3 + q],);
                 }
                 else {
                   /*
@@ -1644,7 +1644,7 @@ function AnimCube3(params) {
                     drawPolygon(graphics, fillX, fillY, colors[cube[i][p * 3 + q]]);
                   */
                   drawFlorian(graphics, fillX, fillY, colors[cube[i][p * 3 + q]], p, q, 1);
-                   drawMarker(graphics, fillX, fillY, mcube[i][p * 3 + q]);
+                   drawMarker(graphics, fillX, fillY, mcube[i][p * 3 + q],colors[cube[i][p * 3 + q]]);
                
                 }
               }
@@ -1696,7 +1696,7 @@ function AnimCube3(params) {
                 // drawPolygon(graphics, fillX, fillY, colors[cube[i][p * 3 + q]]);
                 // fillPolygon(graphics, fillX, fillY, colors[cube[i][p * 3 + q]]);
                 drawFlorian(graphics, fillX, fillY, colors[cube[i][p * 3 + q]], p, q, 0);
-                 drawMarker(graphics, fillX, fillY, mcube[i][p * 3 + q]);
+                 drawMarker(graphics, fillX, fillY, mcube[i][p * 3 + q], colors[cube[i][p * 3 + q]]);
           
               }
             }
@@ -2192,16 +2192,22 @@ function AnimCube3(params) {
 
   var superRotate = [[0, 1, 2, 3], [3, 0, 1, 2], [2, 3, 0, 1], [1, 2, 3, 0]];
 
-  function drawMarker(g, xx, yy, m) {
+  function drawMarker(g, xx, yy, m, color="black") {
     var x = [];
     var y = [];
+    if m === 5 {
+    theAdjust = -0.65; 
+    g.strokeStyle = color;} 
+    else {
+    theAdjust = 0.2; 
+    g.strokeStyle = "black";}
     // scale down so there is a margin around the X
     for (var i = 0; i < 4; i++) {
-      x[i] = Math.floor(xx[i] + (xx[superRotate[2][i]] - xx[i]) * .20);
-      y[i] = Math.floor(yy[i] + (yy[superRotate[2][i]] - yy[i]) * .20);
+      x[i] = Math.floor(xx[i] + (xx[superRotate[2][i]] - xx[i]) * theAdjust);
+      y[i] = Math.floor(yy[i] + (yy[superRotate[2][i]] - yy[i]) * theAdjust);
     }
     g.lineWidth = 2*dpr;
-    g.strokeStyle = "black";
+
 
     if (m === 1) {
       // an "X"
@@ -2245,6 +2251,18 @@ function AnimCube3(params) {
       g.lineTo((x[3] + x[0]) / 2, (y[3] + y[0]) / 2);
       g.closePath();
       g.stroke();
+    } else if (m === 5) {
+      // a filled square "□"
+      
+      g.beginPath();
+      g.moveTo(x[0], y[0]);
+      g.lineTo(x[1], y[1]);
+      g.lineTo(x[2], y[2]);
+      g.lineTo(x[3], y[3]);
+      g.closePath();
+      g.stroke();
+      g.fillStyle = color;
+      g.fill();
     }
   }
 
