@@ -2195,8 +2195,9 @@ function AnimCube3(params) {
   function drawMarker(g, xx, yy, m, color="black") {
     var x = [];
     var y = [];
-    if m === 5 {
-    theAdjust = -0.65; 
+    var theAdjust;
+    if (m === 5) {
+    theAdjust = -0.065; 
     g.strokeStyle = color;} 
     else {
     theAdjust = 0.2; 
